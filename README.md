@@ -1,1 +1,0 @@
-# Ecclessiastica_App_FLTK_Rust
