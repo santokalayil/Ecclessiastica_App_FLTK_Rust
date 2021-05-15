@@ -23,7 +23,7 @@ use crate::views::logo::LogoImage;
 pub fn login_window() {
     let window_x: i32 = 100;
     let window_y: i32 = 100;
-    let window_width: i32 = 750;
+    let window_width: i32 = 800;
     let window_height: i32 = 550;
     let window_title: &str = "Ecclesiastica v.01 - Login";
     let mut win = Window::new(window_x, window_y, window_width, window_height, None)
