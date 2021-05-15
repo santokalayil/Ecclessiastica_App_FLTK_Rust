@@ -30,11 +30,13 @@ impl LogoImage {
         logo_frame.set_color(Color::Yellow);
 
         logo_frame.draw(|f| {
-            // let image_data = read("assets\\app_icon.png").unwrap();
-            let mut img = PngImage::load("assets\\app_icon.png").unwrap();
+            let mut img = PngImage::load( std::path::Path::new("assets/app_icon.png")).unwrap();
             img.scale(f.w(), f.h(), true, true);
-            img.draw(f.x(), f.y(), f.w(), f.h());
-        });
+            img.draw(f.x() + f.w()/2 - img.width()/2,
+                             f.y() + f.h()/2 - img.height()/2,
+                             img.width(), 
+                             img.height());
+         });
         
         group.end();
         LogoImage { group, logo_frame}
@@ -43,34 +45,11 @@ impl LogoImage {
 
 
 
-// pub fn generate_logo(parent:fltk::group::Pack) -> fltk::group::Pack {
-//     let pack = fltk::group::Pack::new(parent.x(), parent.y(), parent.width(), parent.height(), "");
-
-//     let image_data = read("assets\\app_icon.png").unwrap(); // .replace("red", "green")
-//     let mut img = PngImage::from_data(&image_data).unwrap();
-//     img.scale(img.w()/10, img.h()/10, false,false);
-//     println!("{}{}", img.w(), img.h());
-//     // let mut svg = SvgImage::from_data(&image_data).unwrap();
-//     // let mut svg = SvgImage::load("assets\\Ecclesiastica.svg")
-    
-
-//     let mut photo_frame = Frame::default()
-//         .center_of(&pack)
-//         .with_size(img.w(), img.h());
-//     photo_frame.set_frame(fltk::enums::FrameType::FlatBox);
-//     photo_frame.set_color(fltk::enums::Color::Red);
-
-//     photo_frame.draw({
-//         move |f| {
-//             // img.scale(f.width(), f.height(), true, false);
-//             img.draw(
-//                 parent.x(),
-//                 // (parent.x() as f32 + parent.width() as f32 / 2.8) as i32,
-//                  parent.y() + 0, 
-//                  f.width(), f.height()
-//             );
-//         }
-//     });
-//     pack.end();
-//     pack
-// }
+// logo_frame.draw(|f| {
+//     let mut img = PngImage::load( std::path::Path::new("assets/app_icon.png")).unwrap();
+//     img.scale(f.w(), f.h(), true, true);
+//     img.draw(f.x() + f.w()/2 - img.width()/2,
+//                      f.y() + f.h()/2 - img.height()/2,
+//                      img.width(), 
+//                      img.height());
+//  });
